@@ -1,4 +1,4 @@
-g*.class
+*.class
 .*.swp
 .beamer
 # Package Files #
