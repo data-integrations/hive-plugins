@@ -6,7 +6,7 @@ Description
 Imports data from hdfs directory/file into a hive table. Hive Import Action imports data from HDFS by executing provided Hive [Load Statement](https://cwiki.apache.org/confluence/display/Hive/GettingStarted). 
 Local file storage is not allowed because a pipeline can run on any machine. If `LOCAL` file storage option is provided,
 pipeline deployment fails at publish time. Hive Import only accepts hive `LOAD` statements. If any other hive query is provided,
-pipeline publish will fail. Hive import works with Hive 1.2.1.
+pipeline publish will fail. If the Load command is executed successfully, all the files in the directory will be moved, not copied, to hive/warehouse directory. Hive import works with Hive 1.2.1.
 
 
 Use Case
