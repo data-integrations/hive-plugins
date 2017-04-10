@@ -60,7 +60,7 @@ public class HiveExport extends Action {
                                              "select statement.");
       }
     } catch (SqlParseException e) {
-      throw new IllegalArgumentException("Error while parsing select statemnt. Please provide a valid hive select " +
+      throw new IllegalArgumentException("Error while parsing select statement. Please provide a valid hive select " +
                                            "statement.");
     }
 
@@ -70,7 +70,8 @@ public class HiveExport extends Action {
       try {
         FileSystem fs = FileSystem.get(configuration);
         if(fs.exists(new Path(config.path))) {
-          throw new IllegalArgumentException(String.format("Exception "));
+          throw new IllegalArgumentException(String.format("The path %s already exists. Please either delete that " +
+                                                             "path or provide another path.", config.path));
         }
       } catch (IOException e) {
         throw new RuntimeException("Exception occurred while doing directory check", e);
