@@ -8,12 +8,27 @@
       "properties": [
         {
           "widget-type": "textbox",
-          "label": "File Path",
-          "name": "path"
+          "label": "HDFS export directory path",
+          "name": "path",
+          "widget-attributes": {
+            "placeholder": "/path/to/export/directory"
+          }
+        },
+        {
+          "widget-type": "select",
+          "label": "Overwrite directory?",
+          "name": "overwrite",
+          "widget-attributes": {
+            "values": [
+              "yes",
+              "no"
+            ],
+            "default": "yes"
+          }
         },
         {
           "widget-type": "textbox",
-          "label": "Delimiter for the input file",
+          "label": "Column delimiter",
           "name": "delimiter",
           "widget-attributes": {
             "default": ","
@@ -34,15 +49,15 @@
           "label": "Connection String",
           "name": "connectionString",
           "widget-attributes": {
-            "placeholder": "jdbc:hive2://localhost:10010/mydb"
+            "placeholder": "jdbc:hive2://localhost:10000/mydb;auth=delegationToken"
           }
         },
         {
           "widget-type": "textbox",
-          "label": "Export Statement",
+          "label": "Select query",
           "name": "statement",
           "widget-attributes": {
-            "placeholder": "select * from tablemName"
+            "placeholder": "SELECT * FROM employee e JOIN salary s ON (e.id = s.id)"
           }
         }
       ]

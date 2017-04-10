@@ -5,8 +5,8 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>co.cask.hydrator</groupId>
-  <artifactId>hive-export-action</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
+  <artifactId>hive-plugins</artifactId>
+  <version>1.0.0-1.2.1</version>
   <licenses>
     <license>
       <name>The Apache Software License, Version 2.0</name>
@@ -53,6 +53,12 @@
       <id>sonatype-snapshots</id>
       <url>https://oss.sonatype.org/content/repositories/snapshots</url>
     </repository>
+    <repository>
+      <id>mavencentral</id>
+      <name>Maven Central</name>
+      <url>https://repo1.maven.org/maven2/</url>
+      <layout>default</layout>
+    </repository>
   </repositories>
 
   <properties>
@@ -61,17 +67,18 @@
     <widgets.dir>widgets</widgets.dir>
     <docs.dir>docs</docs.dir>
     <!-- properties for script build step that creates the config files for the artifacts -->
-    <app.parents>system:cdap-data-pipeline[4.1.0,4.2.0-SNAPSHOT),system:cdap-data-streams[4.1.0,4.2.0-SNAPSHOT)</app.parents>
+    <app.parents>system:cdap-data-pipeline[4.1.0,4.2.0-SNAPSHOT),system:cdap-data-streams[4.1.0,4.2.0-SNAPSHOT)
+    </app.parents>
     <main.basedir>${project.basedir}</main.basedir>
   </properties>
 
   <dependencies>
-  <dependency>
-    <groupId>co.cask.cdap</groupId>
-    <artifactId>cdap-etl-api</artifactId>
-    <version>4.1.0</version>
-    <scope>provided</scope>
-  </dependency>
+    <dependency>
+      <groupId>co.cask.cdap</groupId>
+      <artifactId>cdap-etl-api</artifactId>
+      <version>4.1.0</version>
+      <scope>provided</scope>
+    </dependency>
     <dependency>
       <groupId>co.cask.cdap</groupId>
       <artifactId>hydrator-test</artifactId>
@@ -84,69 +91,79 @@
       <version>4.1.0</version>
       <scope>provided</scope>
     </dependency>
-  <dependency>
-    <groupId>co.cask.hydrator</groupId>
-    <artifactId>hydrator-common</artifactId>
-    <version>1.6.0</version>
-    <scope>provided</scope>
-  </dependency>
+    <dependency>
+      <groupId>co.cask.hydrator</groupId>
+      <artifactId>hydrator-common</artifactId>
+      <version>1.6.0</version>
+      <scope>provided</scope>
+    </dependency>
     <dependency>
       <groupId>org.apache.hive</groupId>
       <artifactId>hive-jdbc</artifactId>
-      <version>2.1.1</version>
+      <version>1.2.1</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.hive</groupId>
+      <artifactId>hive-exec</artifactId>
+      <version>1.2.1</version>
     </dependency>
     <dependency>
       <groupId>org.apache.commons</groupId>
       <artifactId>commons-lang3</artifactId>
       <version>3.0</version>
     </dependency>
+    <dependency>
+      <groupId>org.apache.calcite</groupId>
+      <artifactId>calcite-core</artifactId>
+      <version>1.11.0</version>
+    </dependency>
   </dependencies>
 
   <build>
-  <pluginManagement>
-    <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.1</version>
-        <configuration>
-          <source>1.7</source>
-          <target>1.7</target>
-        </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.felix</groupId>
-        <artifactId>maven-bundle-plugin</artifactId>
-        <version>2.5.4</version>
-        <extensions>true</extensions>
-        <configuration>
-          <instructions>
-            <_exportcontents>co.cask.hydrator.plugin.*;</_exportcontents>
-            <Embed-Dependency>*;inline=false;scope=compile</Embed-Dependency>
-            <Embed-Transitive>true</Embed-Transitive>
-            <Embed-Directory>lib</Embed-Directory>
-          </instructions>
-        </configuration>
-        <executions>
-          <execution>
-            <phase>package</phase>
-            <goals>
-              <goal>bundle</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-antrun-plugin</artifactId>
-        <version>1.7</version>
-        <executions>
-          <execution>
-            <id>create-artifact-config</id>
-            <phase>prepare-package</phase>
-            <configuration>
-              <target>
-                <script language="javascript"> <![CDATA[
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>3.1</version>
+          <configuration>
+            <source>1.7</source>
+            <target>1.7</target>
+          </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.felix</groupId>
+          <artifactId>maven-bundle-plugin</artifactId>
+          <version>2.5.4</version>
+          <extensions>true</extensions>
+          <configuration>
+            <instructions>
+              <_exportcontents>co.cask.hydrator.plugin.*;</_exportcontents>
+              <Embed-Dependency>*;inline=false;scope=compile</Embed-Dependency>
+              <Embed-Transitive>true</Embed-Transitive>
+              <Embed-Directory>lib</Embed-Directory>
+            </instructions>
+          </configuration>
+          <executions>
+            <execution>
+              <phase>package</phase>
+              <goals>
+                <goal>bundle</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-antrun-plugin</artifactId>
+          <version>1.7</version>
+          <executions>
+            <execution>
+              <id>create-artifact-config</id>
+              <phase>prepare-package</phase>
+              <configuration>
+                <target>
+                  <script language="javascript"> <![CDATA[
 
                   // for some reason, project.basedir evaluates to null if we just get the property here.
                   // so we set main.basedir to project.basedir in the pom properties, then main.basedir is used here
@@ -216,30 +233,30 @@
                   fw.write(JSON.stringify(config, null, 2));
                   fw.close();
                 ]]></script>
-              </target>
-            </configuration>
-            <goals>
-              <goal>run</goal>
-            </goals>
-          </execution>
-        </executions>
+                </target>
+              </configuration>
+              <goals>
+                <goal>run</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>2.14.1</version>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.felix</groupId>
+        <artifactId>maven-bundle-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-antrun-plugin</artifactId>
       </plugin>
     </plugins>
-  </pluginManagement>
-  <plugins>
-    <plugin>
-      <groupId>org.apache.maven.plugins</groupId>
-      <artifactId>maven-surefire-plugin</artifactId>
-      <version>2.14.1</version>
-    </plugin>
-    <plugin>
-      <groupId>org.apache.felix</groupId>
-      <artifactId>maven-bundle-plugin</artifactId>
-    </plugin>
-    <plugin>
-      <groupId>org.apache.maven.plugins</groupId>
-      <artifactId>maven-antrun-plugin</artifactId>
-    </plugin>
-  </plugins>
-</build>
+  </build>
 </project>

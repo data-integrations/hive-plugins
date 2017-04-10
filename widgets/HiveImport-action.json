@@ -1,0 +1,38 @@
+{
+  "metadata": {
+    "spec-version": "1.0"
+  },
+  "configuration-groups": [
+    {
+      "label": "General",
+      "properties": [
+        {
+          "widget-type": "textbox",
+          "label": "Username",
+          "name": "user"
+        },
+        {
+          "widget-type": "password",
+          "label": "Password",
+          "name": "password"
+        },
+        {
+          "widget-type": "textbox",
+          "label": "Connection String.",
+          "name": "connectionString",
+          "widget-attributes": {
+            "placeholder": "jdbc:hive2://localhost:10000/mydb;auth=delegationToken"
+          }
+        },
+        {
+          "widget-type": "textbox",
+          "label": "Load Statement",
+          "name": "statement",
+          "widget-attributes": {
+            "placeholder": "LOAD DATA INPATH '/tmp/hive' INTO TABLE testTable"
+          }
+        }
+      ]
+    }
+  ]
+}
