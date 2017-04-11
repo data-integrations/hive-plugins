@@ -5,8 +5,8 @@ Hive Plugins
 
 Hive import and export plugins to copy data to/from hive tables. These actions are compatible with Hive 1.2.1.
 
-* [Hive Export](docs/HIVE-EXPORT.md)
-* [Hive Import](docs/HIVE-IMPORT.md)
+* [Hive Export](docs/README-HIVE-EXPORT.md)
+* [Hive Import](docs/README-HIVE-IMPORT.md)
 
 Build
 -----
