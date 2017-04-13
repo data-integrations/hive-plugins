@@ -8,24 +8,24 @@
       "properties": [
         {
           "widget-type": "textbox",
-          "label": "Username",
+          "label": "Hive Metastore Username",
           "name": "user"
         },
         {
           "widget-type": "password",
-          "label": "Password",
+          "label": "Hive Metastore Password",
           "name": "password"
         },
         {
           "widget-type": "textbox",
-          "label": "Connection String",
+          "label": "JDBC Connection String",
           "name": "connectionString",
           "widget-attributes": {
             "placeholder": "jdbc:hive2://localhost:10000/mydb;auth=delegationToken"
           }
         },
         {
-          "widget-type": "textbox",
+          "widget-type": "textarea",
           "label": "Select Statement",
           "name": "statement",
           "widget-attributes": {
@@ -54,7 +54,7 @@
         },
         {
           "widget-type": "textbox",
-          "label": "Column delimiter",
+          "label": "Column separator",
           "name": "delimiter",
           "widget-attributes": {
             "default": ","

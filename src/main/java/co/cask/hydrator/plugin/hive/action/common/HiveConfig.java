@@ -39,24 +39,23 @@ public class HiveConfig extends PluginConfig {
   public String connectionString;
 
   @Name(USER)
-  @Description("User to use to connect to the specified database. Required for databases that " +
-    "need authentication. Optional for databases that do not require authentication.")
+  @Description("User to use to connect to hive metastore database. " +
+    "Optional for databases that do not require authentication.")
   @Nullable
   @Macro
   public String user;
 
   @Name(PASSWORD)
-  @Description("Password to use to connect to the specified database. Required for databases that " +
-    "need authentication. Optional for databases that do not require authentication.")
+  @Description("Password to use to connect to hive metastore database. " +
+    "Optional for databases that do not require authentication.")
   @Nullable
   @Macro
   public String password;
 
   @Name(STATEMENT)
-  @Description("Command to execute on hive")
+  @Description("Hive command to execute")
   @Macro
   public String statement;
-
 
   public HiveConfig(String connectionString, String user, String password, String statement) {
     this.connectionString = connectionString;
