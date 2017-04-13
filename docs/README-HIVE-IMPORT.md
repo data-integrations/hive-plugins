@@ -22,10 +22,10 @@ Plugin Configuration
 
 | Configuration | Required | Default | Description |
 | :------------ | :------: | :----- | :---------- |
-| **Username** | **N** | N/A | User identity for connecting to the specified hive database. Required for databases that need authentication. Optional for databases that do not require authentication. |
-| **Password** | **N** | N/A | Password to use to connect to the specified database. Required for databases that need authentication. Optional for databases that do not require authentication. |
-| **Connection String** | **Y** | N/A | JDBC connection string including database name. Please use auth=delegationToken, CDAP platform will provide appropriate delegation token while running the pipeline. |
-| **Load Statement** | **Y** | N/A | Load command to load files data into a hive table. `LOCAL` option in `LOAD` command is not available. |
+| **Hive Metastore Username** | **N** | N/A | User identity for connecting to the specified hive database. Required for databases that need authentication. Optional for databases that do not require authentication. |
+| **Hive Metastore Password** | **N** | N/A | Password to use to connect to the specified database. Required for databases that need authentication. Optional for databases that do not require authentication. |
+| **JDBC Connection String** | **Y** | N/A | JDBC connection string including database name. Please use auth=delegationToken, CDAP platform will provide appropriate delegation token while running the pipeline. |
+| **Statement to Load data into hive** | **Y** | N/A | Load command to load files data into a hive table. `LOCAL` option in `LOAD` command is not available. |
 
 Build
 -----

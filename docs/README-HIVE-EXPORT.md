@@ -26,13 +26,13 @@ Plugin Configuration
 
 | Configuration | Required | Default | Description |
 | :------------ | :------: | :----- | :---------- |
-| **Username** | **N** | N/A | User identity for connecting to the specified hive database. Required for databases that need authentication. Optional for databases that do not require authentication. |
-| **Password** | **N** | N/A | Password to use to connect to the specified database. Required for databases that need authentication. Optional for databases that do not require authentication. |
-| **Connection String** | **Y** | N/A | JDBC connection string including database name. Please use auth=delegationToken, CDAP platform will provide appropriate delegation token while running the pipeline. |
+| **Hive Metastore Username** | **N** | N/A | User identity for connecting to the specified hive database. Required for databases that need authentication. Optional for databases that do not require authentication. |
+| **Hive Metastore Password** | **N** | N/A | Password to use to connect to the specified database. Required for databases that need authentication. Optional for databases that do not require authentication. |
+| **JDBC Connection String** | **Y** | N/A | JDBC connection string including database name. Please use auth=delegationToken, CDAP platform will provide appropriate delegation token while running the pipeline. |
 | **Select Statement** | **Y** | N/A | Valid select command to select values from a hive table. |
 | **Output Directory** | **Y** | N/A | HDFS Directory path where exported data will be written. If it does not exist it will get created. If it already exists, we can either overwrite it or fail at publish time based on `Overwrite Output Directory` property. |
 | **Overwrite Output Directory ** | **Y** | yes | If yes is selected, if the HDFS `path` exists, it will be overwritten. If no is selected, if the HDFS path exists, pipeline deployment will fail while publishing the pipeline. |
-| **Column delimiter** | **Y** | , | Delimiter in the exported file. Values in each column is separated by this delimiter while writing to output file. By default, it uses comma.  |
+| **Column Separator** | **Y** | , | Delimiter in the exported file. Values in each column is separated by this delimiter while writing to output file. By default, it uses comma.  |
 
 Build
 -----

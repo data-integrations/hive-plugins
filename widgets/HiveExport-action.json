@@ -54,7 +54,7 @@
         },
         {
           "widget-type": "textbox",
-          "label": "Column separator",
+          "label": "Column Separator",
           "name": "delimiter",
           "widget-attributes": {
             "default": ","
