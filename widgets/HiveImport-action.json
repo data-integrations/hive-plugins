@@ -25,7 +25,7 @@
           }
         },
         {
-          "widget-type": "textbox",
+          "widget-type": "textarea",
           "label": "Statement to Load data into hive",
           "name": "statement",
           "widget-attributes": {
