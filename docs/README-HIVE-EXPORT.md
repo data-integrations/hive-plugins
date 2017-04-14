@@ -31,7 +31,7 @@ Plugin Configuration
 | **JDBC Connection String** | **Y** | N/A | JDBC connection string including database name. Please use auth=delegationToken, CDAP platform will provide appropriate delegation token while running the pipeline. |
 | **Select Statement** | **Y** | N/A | Valid select command to select values from a hive table. |
 | **Output Directory** | **Y** | N/A | HDFS Directory path where exported data will be written. If it does not exist it will get created. If it already exists, we can either overwrite it or fail at publish time based on `Overwrite Output Directory` property. |
-| **Overwrite Output Directory ** | **Y** | yes | If yes is selected, if the HDFS `path` exists, it will be overwritten. If no is selected, if the HDFS path exists, pipeline deployment will fail while publishing the pipeline. |
+| **Overwrite Output Directory** | **Y** | yes | If yes is selected, if the HDFS `path` exists, it will be overwritten. If no is selected, if the HDFS path exists, pipeline deployment will fail while publishing the pipeline. |
 | **Column Separator** | **Y** | , | Delimiter in the exported file. Values in each column is separated by this delimiter while writing to output file. By default, it uses comma.  |
 
 Build
