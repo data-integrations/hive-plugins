@@ -1,5 +1,5 @@
-# HiveImport Action
-
+HiveImport Action
+=================
 
 Description
 -----------
@@ -12,7 +12,6 @@ pipeline publish will fail. If the Load command is executed successfully, all th
 Use Case
 --------
 Hive Import Action executes a hive load statement which loads data from HDFS file/directory location into a hive table.
-
 
 Properties
 ----------
@@ -27,7 +26,6 @@ that need authentication. Optional for databases that do not require authenticat
 CDAP platform will provide appropriate delegation token while running the pipeline. 
 
 **statement:** Load command to load files data into a hive table. `LOCAL` option in `LOAD` command is not available.
-
 
 Example
 -------
