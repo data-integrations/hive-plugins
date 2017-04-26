@@ -21,12 +21,12 @@
       <name>Cask Data</name>
       <email>cask-dev@googlegroups.com</email>
       <organization>Cask Data, Inc.</organization>
-      <organizationUrl>http://www.cdap.io</organizationUrl>
+      <organizationUrl>http://www.cdap.co</organizationUrl>
     </developer>
   </developers>
 
   <issueManagement>
-    <url>https://issues.cask.co/browse/HYDRATOR</url>
+    <url>https://issues.cask.co/browse/CDAP</url>
   </issueManagement>
 
   <distributionManagement>
