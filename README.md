@@ -4,8 +4,8 @@ Hive Plugins
 [![Join CDAP community](https://cdap-users.herokuapp.com/badge.svg?t=hive-plugins)](https://cdap-users.herokuapp.com)
 [![Build Status](https://travis-ci.org/hydrator/hive-plugins.svg?branch=master)](https://travis-ci.org/hydrator/hive-plugins)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-[![CDAP Action](cdap-users.herokuapp.com/assets/cdap-action.svg)](http://docs.cask.co/cdap)
-[![Cask Marketplace Availability](cdap-users.herokuapp.com/assets/cm-available.svg)](http://docs.cask.co/cdap)
+<img alt="CDAP Action" src="https://cdap-users.herokuapp.com/assets/cdap-action.svg"/>
+<img  alt="Cask Market Availability" src="https://cdap-users.herokuapp.com/assets/cm-available.svg"/>
 
 Hive import and export plugins to copy data to/from hive tables. These actions are compatible with Hive 1.2.1.
 
