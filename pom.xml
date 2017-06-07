@@ -6,7 +6,7 @@
 
   <groupId>co.cask.hydrator</groupId>
   <artifactId>hive-plugins</artifactId>
-  <version>1.6.1-1.1.0</version>
+  <version>1.6.2-1.1.0</version>
   <licenses>
     <license>
       <name>The Apache Software License, Version 2.0</name>
@@ -63,11 +63,11 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <cdap.version>4.1.0</cdap.version>
+    <cdap.version>4.2.0</cdap.version>
     <widgets.dir>widgets</widgets.dir>
     <docs.dir>docs</docs.dir>
     <!-- properties for script build step that creates the config files for the artifacts -->
-    <app.parents>system:cdap-data-pipeline[4.1.0,4.2.0-SNAPSHOT),system:cdap-data-streams[4.1.0,4.2.0-SNAPSHOT)
+    <app.parents>system:cdap-data-pipeline[4.2.0,5.0.0-SNAPSHOT),system:cdap-data-streams[4.2.0,5.0.0-SNAPSHOT)
     </app.parents>
     <main.basedir>${project.basedir}</main.basedir>
   </properties>
@@ -94,7 +94,7 @@
     <dependency>
       <groupId>co.cask.hydrator</groupId>
       <artifactId>hydrator-common</artifactId>
-      <version>1.6.0</version>
+      <version>1.7.0-SNAPSHOT</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
