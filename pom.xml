@@ -6,7 +6,7 @@
 
   <groupId>co.cask.hydrator</groupId>
   <artifactId>hive-plugins</artifactId>
-  <version>1.6.1-1.1.0</version>
+  <version>1.7.0-1.1.0</version>
   <licenses>
     <license>
       <name>The Apache Software License, Version 2.0</name>
@@ -63,11 +63,12 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <cdap.version>4.1.0</cdap.version>
+    <cdap.version>4.2.0</cdap.version>
+    <hydrator.version>1.7.0</hydrator.version>
     <widgets.dir>widgets</widgets.dir>
     <docs.dir>docs</docs.dir>
     <!-- properties for script build step that creates the config files for the artifacts -->
-    <app.parents>system:cdap-data-pipeline[4.1.0,4.2.0-SNAPSHOT),system:cdap-data-streams[4.1.0,4.2.0-SNAPSHOT)
+    <app.parents>system:cdap-data-pipeline[4.2.0,4.3.0-SNAPSHOT),system:cdap-data-streams[4.2.0,4.3.0-SNAPSHOT)
     </app.parents>
     <main.basedir>${project.basedir}</main.basedir>
   </properties>
@@ -76,25 +77,25 @@
     <dependency>
       <groupId>co.cask.cdap</groupId>
       <artifactId>cdap-etl-api</artifactId>
-      <version>4.1.0</version>
+      <version>${cdap.version}</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>co.cask.cdap</groupId>
       <artifactId>hydrator-test</artifactId>
-      <version>4.1.0</version>
+      <version>${cdap.version}</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>co.cask.cdap</groupId>
       <artifactId>cdap-data-pipeline</artifactId>
-      <version>4.1.0</version>
+      <version>${cdap.version}</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>co.cask.hydrator</groupId>
       <artifactId>hydrator-common</artifactId>
-      <version>1.6.0</version>
+      <version>${hydrator.version}</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
