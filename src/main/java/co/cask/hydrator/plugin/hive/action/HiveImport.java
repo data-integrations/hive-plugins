@@ -44,7 +44,7 @@ public class HiveImport extends Action {
   @Override
   public void configurePipeline(PipelineConfigurer pipelineConfigurer) throws IllegalArgumentException {
     // Load command should not allow local storage
-    if (config.statement.substring(10, 15).equalsIgnoreCase("LOCAL")) {
+    if (config.statement.length() > 15 && config.statement.substring(10, 15).equalsIgnoreCase("LOCAL")) {
       throw new IllegalArgumentException("Hive Import does not allow local file storage." +
                                            "Please import data to HDFS location.");
     }
