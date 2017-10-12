@@ -43,15 +43,6 @@ public class HiveImport extends Action {
 
   @Override
   public void configurePipeline(PipelineConfigurer pipelineConfigurer) throws IllegalArgumentException {
-    //validate hive command. For import we only accept Load statements
-    if (!config.statement.toUpperCase().startsWith("LOAD")) {
-      throw new IllegalArgumentException("To import data to a hive table, please use Hive LOAD query");
-    }
-
-    if (config.statement.length() < 15) {
-      throw new IllegalArgumentException("Invalid LOAD query. Please use correct Hive LOAD query");
-    }
-
     // Load command should not allow local storage
     if (config.statement.substring(10, 15).equalsIgnoreCase("LOCAL")) {
       throw new IllegalArgumentException("Hive Import does not allow local file storage." +
