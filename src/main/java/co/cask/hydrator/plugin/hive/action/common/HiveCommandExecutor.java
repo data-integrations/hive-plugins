@@ -36,6 +36,8 @@ public class HiveCommandExecutor {
 
   public void execute(String command) throws Exception {
       Statement statement = connection.createStatement();
+      statement.execute("SET hive.exec.dynamic.partition = true");
+      statement.execute("SET hive.exec.dynamic.partition.mode = nonstrict");
       statement.execute(command);
       statement.close();
   }
