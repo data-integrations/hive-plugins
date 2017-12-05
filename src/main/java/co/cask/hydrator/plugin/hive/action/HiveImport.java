@@ -24,17 +24,14 @@ import co.cask.cdap.etl.api.action.Action;
 import co.cask.cdap.etl.api.action.ActionContext;
 import co.cask.hydrator.plugin.hive.action.common.HiveCommandExecutor;
 import co.cask.hydrator.plugin.hive.action.common.HiveConfig;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
- * Runs a select query after a pipeline run.
+ * Imports data from hdfs directory/file into a hive table.
  */
 @Plugin(type = Action.PLUGIN_TYPE)
 @Name("HiveImport")
 @Description("Hive import plugin")
 public class HiveImport extends Action {
-  private static final Logger LOG = LoggerFactory.getLogger(HiveImport.class);
   private final HiveConfig config;
 
   public HiveImport(HiveConfig config) {
@@ -43,15 +40,22 @@ public class HiveImport extends Action {
 
   @Override
   public void configurePipeline(PipelineConfigurer pipelineConfigurer) throws IllegalArgumentException {
-    // Load command should not allow local storage
-    if (config.statement.length() >= 15 && config.statement.substring(10, 15).equalsIgnoreCase("LOCAL")) {
-      throw new IllegalArgumentException("Hive Import does not allow local file storage." +
-                                           "Please import data to HDFS location.");
+    validateImportConfig();
+  }
+
+  private void validateImportConfig() {
+    if (!config.containsMacro("statement")) {
+      // Load command should not allow local storage
+      if (config.statement.length() >= 15 && config.statement.substring(10, 15).equalsIgnoreCase("LOCAL")) {
+        throw new IllegalArgumentException("Hive Import does not allow local file storage." +
+                                             "Please import data to HDFS location.");
+      }
     }
   }
 
   @Override
   public void run(ActionContext context) throws Exception {
+    validateImportConfig();
     HiveCommandExecutor executor = new HiveCommandExecutor(config.connectionString, config.user, config.password);
     executor.execute(config.statement);
     executor.cleanup();
