@@ -2,6 +2,7 @@
   "metadata": {
     "spec-version": "1.0"
   },
+  "display-name": "Hive Bulk Import",
   "configuration-groups": [
     {
       "label": "General",
