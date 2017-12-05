@@ -8,7 +8,7 @@ it converts that select query to [INSERT OVERWRITE DIRECTORY](https://cwiki.apac
 When this query is executed, hive starts a mapreduce job which stores the results to provided directory location. So there can be multiple files in
 a given directory location. Hive Export works with hive 1.2.1.
 
-If any query other than a valid SELECT query is provided, Hive Export will fail to publish the pipeline. This is becuase we use [Apache Calcite](https://calcite.apache.org/)
+If any query other than a valid SELECT query is provided, Hive Export will fail to publish the pipeline. This is because we use [Apache Calcite](https://calcite.apache.org/)
 to parse the SELECT query to verify that its not any other SQL Query.
 
 To run the SELECT query, if `Overwrite Output Directory` property is set to `no`, the pipeline publish will fail if the output directory already exists. In that case,
