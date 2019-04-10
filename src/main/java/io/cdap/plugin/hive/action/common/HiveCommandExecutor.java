@@ -14,7 +14,7 @@
  * the License.
  */
 
-package co.cask.hydrator.plugin.hive.action.common;
+package io.cdap.plugin.hive.action.common;
 
 import java.sql.Connection;
 import java.sql.Driver;

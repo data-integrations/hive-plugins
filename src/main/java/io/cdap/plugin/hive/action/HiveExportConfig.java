@@ -1,9 +1,9 @@
-package co.cask.hydrator.plugin.hive.action;
+package io.cdap.plugin.hive.action;
 
-import co.cask.cdap.api.annotation.Description;
-import co.cask.cdap.api.annotation.Macro;
-import co.cask.cdap.api.annotation.Name;
-import co.cask.hydrator.plugin.hive.action.common.HiveConfig;
+import io.cdap.cdap.api.annotation.Description;
+import io.cdap.cdap.api.annotation.Macro;
+import io.cdap.cdap.api.annotation.Name;
+import io.cdap.plugin.hive.action.common.HiveConfig;
 
 import javax.annotation.Nullable;
 
