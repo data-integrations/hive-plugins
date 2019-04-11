@@ -14,16 +14,16 @@
  * the License.
  */
 
-package co.cask.hydrator.plugin.hive.action;
+package io.cdap.plugin.hive.action;
 
-import co.cask.cdap.api.annotation.Description;
-import co.cask.cdap.api.annotation.Name;
-import co.cask.cdap.api.annotation.Plugin;
-import co.cask.cdap.etl.api.PipelineConfigurer;
-import co.cask.cdap.etl.api.action.Action;
-import co.cask.cdap.etl.api.action.ActionContext;
-import co.cask.hydrator.plugin.hive.action.common.HiveCommandExecutor;
-import co.cask.hydrator.plugin.hive.action.common.HiveConfig;
+import io.cdap.cdap.api.annotation.Description;
+import io.cdap.cdap.api.annotation.Name;
+import io.cdap.cdap.api.annotation.Plugin;
+import io.cdap.cdap.etl.api.PipelineConfigurer;
+import io.cdap.cdap.etl.api.action.Action;
+import io.cdap.cdap.etl.api.action.ActionContext;
+import io.cdap.plugin.hive.action.common.HiveCommandExecutor;
+import io.cdap.plugin.hive.action.common.HiveConfig;
 
 /**
  * Imports data from hdfs directory/file into a hive table.
