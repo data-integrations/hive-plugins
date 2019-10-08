@@ -1,5 +1,5 @@
 /*
- * Copyright © 2017 Cask Data, Inc.
+ * Copyright © 2017-2019 Cask Data, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -19,6 +19,7 @@ package io.cdap.plugin.hive.action;
 import io.cdap.cdap.api.annotation.Description;
 import io.cdap.cdap.api.annotation.Name;
 import io.cdap.cdap.api.annotation.Plugin;
+import io.cdap.cdap.etl.api.FailureCollector;
 import io.cdap.cdap.etl.api.PipelineConfigurer;
 import io.cdap.cdap.etl.api.action.Action;
 import io.cdap.cdap.etl.api.action.ActionContext;
@@ -40,24 +41,21 @@ public class HiveImport extends Action {
 
   @Override
   public void configurePipeline(PipelineConfigurer pipelineConfigurer) throws IllegalArgumentException {
-    validateImportConfig();
-  }
-
-  private void validateImportConfig() {
-    if (!config.containsMacro("statement")) {
-      // Load command should not allow local storage
-      if (config.statement.length() >= 15 && config.statement.substring(10, 15).equalsIgnoreCase("LOCAL")) {
-        throw new IllegalArgumentException("Hive Import does not allow local file storage." +
-                                             "Please import data to HDFS location.");
-      }
-    }
+      FailureCollector failureCollector = pipelineConfigurer.getStageConfigurer().getFailureCollector();
+      config.validate(failureCollector);
+      config.validateImportStatement(failureCollector);
   }
 
   @Override
   public void run(ActionContext context) throws Exception {
-    validateImportConfig();
-    HiveCommandExecutor executor = new HiveCommandExecutor(config.connectionString, config.user, config.password);
-    executor.execute(config.statement);
+    FailureCollector failureCollector = context.getFailureCollector();
+    config.validate(failureCollector);
+    config.validateImportStatement(failureCollector);
+    failureCollector.getOrThrowException();
+
+    HiveCommandExecutor executor = new HiveCommandExecutor(config.getConnectionString(), config.getUser(),
+                                                           config.getPassword());
+    executor.execute(config.getStatement());
     executor.cleanup();
   }
 }
