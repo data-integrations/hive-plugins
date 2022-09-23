@@ -86,8 +86,9 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <cdap.version>6.1.0-SNAPSHOT</cdap.version>
-    <hydrator.version>2.2.0-SNAPSHOT</hydrator.version>
+    <cdap.version>6.1.4</cdap.version>
+    <hydrator.version>2.2.0</hydrator.version>
+    <hive.version>2.3.3</hive.version>
   </properties>
 
   <dependencies>
@@ -118,12 +119,12 @@
     <dependency>
       <groupId>org.apache.hive</groupId>
       <artifactId>hive-jdbc</artifactId>
-      <version>1.1.0</version>
+      <version>${hive.version}</version>
     </dependency>
     <dependency>
       <groupId>org.apache.hive</groupId>
       <artifactId>hive-exec</artifactId>
-      <version>1.1.0</version>
+      <version>${hive.version}</version>
     </dependency>
     <dependency>
       <groupId>org.apache.hadoop</groupId>
@@ -177,7 +178,7 @@
           <version>1.1.0</version>
           <configuration>
             <cdapArtifacts>
-              <parent>system:cdap-data-pipeline[6.1.0-SNAPSHOT,7.0.0-SNAPSHOT)</parent>
+              <parent>system:cdap-data-pipeline[6.1.4,7.0.0-SNAPSHOT)</parent>
             </cdapArtifacts>
           </configuration>
           <executions>
